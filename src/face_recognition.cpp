@@ -54,7 +54,8 @@ public:
     as_(nh_, name, boost::bind(&FaceRecognition::executeCB, this, _1), false)
   {
     //a face recognized with confidence value higher than the confidence_value threshold is accepted as valid.
-    pnh_.param<double>("confidence_value", confidence_value, 0.88);
+    //confidence value was 0.88
+    pnh_.param<double>("confidence_value", confidence_value, 0.91);
     //if output screen is shown
     pnh_.param<bool>("show_screen_flag", show_screen_flag, true);
     ROS_INFO("show_screen_flag: %s", show_screen_flag ? "true" : "false");
@@ -81,7 +82,7 @@ public:
        ROS_WARN("Alert: Database is not updated. Please delete \"facedata.xml\" and re-run!"); //AFTER
     }
     //subscribe to video stream through image transport class
-    image_sub_ = it_.subscribe("/camera/image_raw", 1, &FaceRecognition::imageCB, this);
+    image_sub_ = it_.subscribe("/camera/rgb/image_raw", 1, &FaceRecognition::imageCB, this);
   }
 
   ~FaceRecognition(void)
