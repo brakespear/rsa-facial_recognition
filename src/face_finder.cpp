@@ -34,7 +34,11 @@ void activeCb()
   ROS_INFO("Begin looking for faces");
 }
 
-// Called every time feedback is received for the goal
+/*
+ * Called every time feedback is received for the goal
+ * Compares the name of any person detected with the name of that being searched for
+ * And sets a flag if they match (that will stop the rotation of the robot)
+*/
 void feedbackCb(const face_recognition::FaceRecognitionFeedbackConstPtr& feedback)
 {
 	ROS_INFO("Received feedback from Goal [%d] ", feedback->order_id);
@@ -58,12 +62,18 @@ void exit_handler(int s)
 }
 
 
-
+/* 
+ * main function expects name of person to find as a command line argument
+ * Name must match that used when training the persons face
+ * Send the continuous facial recognition goal to the server
+ * And spins the robot anticlockwise
+ * Until the feedback from the server indicates that the person being searched for has been found
+*/
 int main (int argc, char **argv)
 {
 	ros::init(argc, argv, "face_finder");
-	if (argc < 2) {
-		ROS_INFO("Usage: face_finder name_1 [name_2] [name_3] ...");
+	if (argc != 2) {
+		ROS_INFO("Usage: face_finder name.");
 		return 1;
 	} else {
 		findName = argv[1];
