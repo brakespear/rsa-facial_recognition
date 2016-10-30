@@ -5,7 +5,7 @@
 
 ### Welcome to the rsa-face_recognition package
 Most of this package is identical to the one found here http://wiki.ros.org/face_recognition
-As such this document only descibes the additional face_finder code. Details on how to setup the facial recognition and train faces etc is on the ROS wiki.
+As such this document only describes the additional face_finder code. Details on how to setup the facial recognition and train faces etc is on the ROS wiki.
 
 ## Installation
 This instalation process is for **catkin** 
@@ -17,7 +17,7 @@ mv rsa-face_recognition procrob\_functional
 cd ~/catkin_ws
 catkin_make
 source ~/catkin_ws/devel/setup.bash
-
+```
 ## Image topic
 This package uses the topic
 * **camera/rgb/image_raw** 
