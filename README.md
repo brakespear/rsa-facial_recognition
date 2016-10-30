@@ -13,7 +13,7 @@ Assuming that your catkin workspace is under **~/catkin_ws**, if not replace **~
 ```
 cd ~/catkin_ws/src
 git clone https://github.com/brakespear/rsa-face_recognition.git
-mv rsa-face_recognition procrob\_functional
+mv rsa-face_recognition procrob_functional
 cd ~/catkin_ws
 catkin_make
 source ~/catkin_ws/devel/setup.bash
@@ -26,6 +26,6 @@ This package uses the topic
 Once you have trained faces using the instructions here http://wiki.ros.org/face_recognition you need to do the following
 ```
 rosrun face_recognition Fserver 
-rosrun face_recognition face\_finder [name]
+rosrun face_recognition face_finder [name]
 ```
 Where [name] is the name of the person you want the robot to find. **This name must match the label used to train that persons face**
